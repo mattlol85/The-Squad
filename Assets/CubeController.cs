@@ -28,3 +28,4 @@ public class CubeController : MonoBehaviour
      rigid.velocity = new Vector2(hmove*speed,vmove*speed);   
     }
 }
+//Matt is a bitch
