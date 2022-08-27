@@ -4,38 +4,48 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float hmove;
-    [SerializeField] float vmove;
+    float hmove;
+    float vmove;
+    bool isGrounded;
+    [SerializeField] bool isFaceRight;
     [SerializeField] float speed;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
-     if(rigid == null){
-        rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-     }
+        if (rigid == null)
+        {
+            rigid = GetComponent<Rigidbody2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
     }
-
+    void Flip()
+    {
+        spriteRenderer.flipX = isFaceRight;
+    }
     // Update is called once per frame, good for user input
     void Update()
     {
-     hmove = Input.GetAxis("Horizontal");
-     vmove = Input.GetAxis("Vertical");
+        hmove = Input.GetAxis("Horizontal");
+        vmove = Input.GetAxis("Vertical");
+        Debug.Log(hmove + " " + vmove);
 
-     Debug.Log(rigid.velocity);   
+        // Sets the character to face right or left
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            isFaceRight = true;
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            isFaceRight = false;
+        }
+    Flip();
     }
     // Called potentially multiple times, good for physics updates
-    void FixedUpdate ()
+    void FixedUpdate()
     {
-     rigid.velocity = new Vector2(hmove*speed,vmove*speed);
-    // Flip sprite depending on direction
-    if(rigid.velocity.x > 0){
-        spriteRenderer.flipX = true;
-    }else{
-        spriteRenderer.flipX = false;
+        rigid.velocity = new Vector2(hmove * speed, vmove * speed);
     }
 
-    }
 }
