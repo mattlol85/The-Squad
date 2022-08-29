@@ -40,12 +40,25 @@ public class PlayerController : MonoBehaviour
         {
             isFaceRight = false;
         }
+        // --------------- CONTROLS ------------------
+        // Jump
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Jump();
+        }
+        {
+            rigid.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+            isGrounded = false;
+        }
     Flip();
     }
     // Called potentially multiple times, good for physics updates
     void FixedUpdate()
     {
+        //TODO add checks to update player isGrounded variable
         rigid.velocity = new Vector2(hmove * speed, vmove * speed);
     }
-
+    void Jump()
+    {
+        rigid.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+    }
 }
