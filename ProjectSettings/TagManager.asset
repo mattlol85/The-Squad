@@ -15,10 +15,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - GroundFront
+  - GroundBack
+  - CloudFront
+  - CloudBack
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player Layer
+    uniqueID: 1890162103
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 3930826689
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 1206177227
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 1782893491
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 3575224891
+    locked: 0
+  - name: New Layer 6
+    uniqueID: 413616413
     locked: 0
